@@ -4,10 +4,16 @@ import styles from "./Layout.module.css";
 const Layout = () => {
   return (
     <main>
-      <section className={styles.left}></section>
-      <textarea defaultValue="test"></textarea>
-      <button>Haistele raaka-aineet</button>
-      <section className={styles.right}></section>
+      <section className={styles.left}>
+        <textarea defaultValue="Riisinuudeli ”phad thai” kana"></textarea>
+        <div>
+          <button>Haistele raaka-aineet</button>
+        </div>
+      </section>
+
+      <section className={styles.right}>
+        <div className={styles.chart}>Awesome chart of the results</div>
+      </section>
     </main>
   );
 };
