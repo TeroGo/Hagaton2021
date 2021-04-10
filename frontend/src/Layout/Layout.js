@@ -5,8 +5,37 @@ import styles from "./Layout.module.css";
 
 const message = "kissa";
 
+function getClassificationIcon(classification) {
+  switch (classification) {
+    case 'CHICKEN':
+      return '🍗';
+
+    case 'BEEF':
+      return '🥩';
+
+    case 'PORK':
+      return '🐷';
+
+    case 'VEGETARIAN':
+      return '🥕';
+
+    case 'SALMON':
+      return '🍣';
+
+    case 'SHELLFISH':
+      return '🦐';
+
+    case 'WHITE_FISH':
+      return '🐟';
+
+    default:
+      return classification;
+  }
+}
+
 const Layout = (props) => {
   const [searchPhrase, setSearchPhrase] = React.useState("");
+  const resultsLoaded = props.foodData && (props.foodData.summary !== undefined);
 
   return (
     <main>
@@ -30,6 +59,13 @@ const Layout = (props) => {
 
       <section className={styles.right}>
         <div className={styles.chart}>
+          {resultsLoaded && (
+            <>
+              <div style={{ fontSize: '256px', position: 'absolute', top: '0' }}>
+                {getClassificationIcon(props.foodData.summary.classification)}
+              </div>              
+            </>
+          )}
           <Chart data={props.foodData} />
           <InfoBox dataFromParent={props.foodData} />
         </div>
