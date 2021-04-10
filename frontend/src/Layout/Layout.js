@@ -71,7 +71,7 @@ const Layout = (props) => {
             </>
           )}
           <Chart data={props.foodData} />
-          <InfoBox dataFromParent={props.foodData} />
+          {Object.keys(props.foodData).length !==0 && <InfoBox dataFromParent={props.foodData} />}
         </div>
       </section>
     </main>
