@@ -19,4 +19,6 @@ fs.createReadStream('data/classifier/trainingset-1.csv')
     expect('Possua', classifier.classify('Possua'), 'PORK');
     expect('Lohikeitto', classifier.classify('Lohikeitto'), 'SALMON');
     expect('Kukkakaaliwingsit', classifier.classify('Kukkakaaliwingsit'), 'VEGETARIAN');
+    expect('Hampurilainen ja ranut', classifier.classify('Hampurilainen ja ranut'), 'BEEF');
+    expect('Wiener-leike ja perunamuussi', classifier.classify('Wiener-leike ja perunamuussi'), 'PORK');
   });
