@@ -17,7 +17,7 @@ const filesToRead = [
 const foodData = {};
 
 filesToRead.forEach(element => {
-  fs.createReadStream('data/finelli/'+ element + '.csv')
+  fs.createReadStream(path.join(__dirname, 'data/finelli/'+ element + '.csv'))
   .pipe(csv({ separator: ';'}))
   .on('data', (data) => {
     if (!foodData[`${element}`]) {
