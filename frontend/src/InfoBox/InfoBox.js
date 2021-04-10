@@ -1,12 +1,26 @@
 import React from "react";
-import { nameOfFood } from "../App";
 
 const InfoBox = (props) => {
-  let test = "apina";
-  if (props.dataFromParent.ingredients) {
-    test = props.dataFromParent.ingredients[0].FOODID;
-  }
-  return <div>{test}</div>;
+  console.log(props.dataFromParent);
+
+  const content = () => {
+    if (!props.dataFromParent?.ingredients) return "";
+    return props.dataFromParent.ingredients[0].calories;
+  };
+
+  const text = content() || "apina";
+
+  return (
+    <div>
+      <p>Annos vastaa noin:</p>
+      <ul>
+        <li>125 sokeripalaa tai</li>
+        <li>0.00005 grammaa uraania</li>
+      </ul>
+
+      {text}
+    </div>
+  );
 };
 
 export default InfoBox;

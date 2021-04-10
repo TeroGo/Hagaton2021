@@ -14,12 +14,16 @@ function App() {
 
   async function fetchData(searchPhrase) {
     console.log(searchPhrase);
-    const response = await fetch(
-      `https://lunchmaster2k.herokuapp.com/api?text=${searchPhrase}`
-    );
-    const food = await response.json();
-    setFoodData(food);
-    console.log(food);
+    try {
+      const response = await fetch(
+        `https://lunchmaster2k.herokuapp.com/api?text=${searchPhrase}`
+      );
+      const food = await response.json();
+      setFoodData(food);
+      console.log(food);
+    } catch (err) {
+      alert(err);
+    }
   }
 
   React.componentDidMount = () => {
