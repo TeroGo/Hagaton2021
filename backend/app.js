@@ -1,13 +1,10 @@
-const https = require('https');
-const fs = require('fs');
 const express = require('express');
-
-const options = {
-  key: fs.readFileSync("key.pem"),
-  cert: fs.readFileSync("cert.pem")
-};
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res) => {
   res.writeHead(200, {'Content-Type': 'application/JSON'});
@@ -18,7 +15,4 @@ app.use((req, res) => {
   }));
 });
 
-app.listen(8000);
-
-https.createServer(options, app).listen(8080);
-console.log('Node server running on port 8080');
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
