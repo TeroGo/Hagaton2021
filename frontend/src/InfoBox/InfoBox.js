@@ -12,7 +12,7 @@ const InfoBox = (props) => {
 
   return (
     <div>
-      <p>Annos vastaa noin:</p>
+      <p>100g annos vastaa noin:</p>
       <ul>
         <li>125 sokeripalaa tai</li>
         <li>0.00005 grammaa uraania</li>
