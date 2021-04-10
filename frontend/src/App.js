@@ -11,6 +11,7 @@ export const chartData = [
 
 function App() {
   const [foodData, setFoodData] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(false);
 
   async function fetchData(searchPhrase) {
     console.log(searchPhrase);
@@ -18,10 +19,15 @@ function App() {
       const response = await fetch(
         `https://lunchmaster2k.herokuapp.com/api?text=${searchPhrase}`
       );
+      setIsLoading(true);
       const food = await response.json();
-      setFoodData(food);
-      console.log(food);
+      setTimeout(() => {
+        setFoodData(food);
+        setIsLoading(false);
+        console.log(food);
+      }, 5000);
     } catch (err) {
+      setIsLoading(false);
       alert(err);
     }
   }
@@ -34,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <Layout foodData={foodData} getData={fetchData} />
+      <Layout foodData={foodData} getData={fetchData} isLoading={isLoading} />
     </div>
   );
 }

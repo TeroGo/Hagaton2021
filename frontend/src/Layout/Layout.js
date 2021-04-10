@@ -2,7 +2,9 @@ import React from "react";
 import Chart from "../Chart/Chart";
 import InfoBox from "../InfoBox/InfoBox";
 import styles from "./Layout.module.css";
-import logo from "../logo.png";
+import logo from'../logo.png';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 const message = "kissa";
 
@@ -79,6 +81,26 @@ const Layout = (props) => {
             <InfoBox dataFromParent={props.foodData} />
           )}
         </div>
+        {props.isLoading && (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+            <Loader
+              type="Puff"
+              color='#FF0099'
+              height={250}
+              width={250}
+              timeout={0}
+            />
+          </div>
+        )}
+        {(!props.isLoading && resultsLoaded) && (
+          <div className={styles.chart}>
+            <div style={{ fontSize: '256px', position: 'absolute', top: '0' }}>
+              {getClassificationIcon(props.foodData.summary.classification)}
+            </div>              
+            <Chart data={props.foodData} />
+            <InfoBox dataFromParent={props.foodData} />
+          </div>
+        )}
       </section>
     </main>
   );
