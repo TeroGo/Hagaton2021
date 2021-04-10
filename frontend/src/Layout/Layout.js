@@ -30,7 +30,7 @@ const Layout = (props) => {
 
       <section className={styles.right}>
         <div className={styles.chart}>
-          <Chart />
+          <Chart data={props.foodData} />
           <InfoBox dataFromParent={props.foodData} />
         </div>
       </section>
