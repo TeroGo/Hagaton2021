@@ -75,32 +75,38 @@ app.get('/api/', (req, res) => {
   }
   const weight = req.query.weight || 100;
   const foundIngredients = [];
-  let classification = 'UNKNOWN';
+  const classification = classify(queryText || '');
+  const summary = {
+    name: queryText,
+    calories: 0,
+    carbs: 0,
+    fat: 0,
+    protein: 0,
+    classification
+  };
 
-  if (queryText) {
-    classification = classify(queryText);
+  foodData.food.forEach(element => {
+    const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
+    if(queryText.match(regex)) {
+      const ingredient = {
+        name: element.FOODNAME,
+        calories: 0,
+        carbs: 0,
+        fat: 0,
+        protein: 0
+      };
+      handleFoodComponentData(ingredient, summary, element);
 
-    foodData.food.forEach(element => {
-      const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
-      if(queryText.match(regex)) {
-        console.log('found ' + element);
-        foundIngredients.push(element);
-      }
-    });
-  }
-  console.log(queryText);
+      console.log(ingredient);
+      foundIngredients.push(ingredient);
+    }
+  });
+  polishSummaryFields(summary, foundIngredients.length, weight, ['fat', 'carbs', 'protein', 'calories']);
 
   res.end(JSON.stringify({
-    summary: {
-      name: queryText,
-      calories: 300,
-      carbs: 25,
-      fat: 50,
-      protein: 10,
-      classification
-    },
+    summary,
     ingredients: foundIngredients
   }));
 });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
