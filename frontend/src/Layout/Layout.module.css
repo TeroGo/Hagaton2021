@@ -1,9 +1,18 @@
 main {
   display: flex;
-  justify-content: stretch;
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    flex-wrap: wrap;
+  }
+  .left {
+    flex-basis: 100%;
+  }
 }
 
 .left {
+  width: 50vw;
   color: white;
   padding: 1em;
   box-sizing: border-box;
@@ -14,6 +23,7 @@ main {
 }
 
 .right {
+  width: 50vw;
   color: green;
 }
 
