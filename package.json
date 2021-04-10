@@ -1,0 +1,26 @@
+{
+  "name": "lunch-master2000",
+  "version": "1.0.0",
+  "description": "Super ai for everything food related",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeroGo/Hagaton2021.git"
+  },
+  "keywords": [
+    "lunch",
+    "ai",
+    "scalable",
+    "cloud",
+    "super"
+  ],
+  "author": "Tero Paavolainen, Joonas Kaski, Tiina Pöyhönen, Jaakko Salonen",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/TeroGo/Hagaton2021/issues"
+  },
+  "homepage": "https://github.com/TeroGo/Hagaton2021#readme"
+}
