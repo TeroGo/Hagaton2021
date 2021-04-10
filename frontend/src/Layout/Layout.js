@@ -44,7 +44,7 @@ const Layout = (props) => {
         <div className='logo-container'>
           <img src={logo} alt='Lunchmaster 2k logo' style={{ marginBottom: '25px' }} />
         </div>
-        <label htmlFor="foodInput">Enter lunch description</label>
+        <label htmlFor="foodInput">What did I have for lunch?</label>
         <textarea
           id="foodInput"
           value={searchPhrase}
@@ -56,7 +56,7 @@ const Layout = (props) => {
               props.getData(searchPhrase);
             }}
           >
-            Haistele raaka-aineet
+            Execute Lunchmaster2k (TM) analysis →
           </button>
         </div>
       </section>
