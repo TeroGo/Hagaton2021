@@ -24,7 +24,7 @@ const Chart = (props) => {
   }
   // empty if no data
   return (
-    <div>
+    <div className={styles.chartContainer}>
       {hasData && (
         <VictoryPie
           data={chartData}
