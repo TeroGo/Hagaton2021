@@ -1,11 +1,11 @@
 import React from "react";
-
+import { nameOfFood } from "../App";
 
 
 
 const InfoBox = () => {
   return (
-         <div>Tähän tulee kampetta selitteistä</div>
+         <div>{nameOfFood}</div>
         
   );
 };

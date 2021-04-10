@@ -2,10 +2,13 @@ import "./App.css";
 import Layout from "./Layout/Layout";
 
 export const chartData = [
-  { x: "Group A", y: 900 },
-  { x: "Group B", y: 400 },
-  { x: "Group C", y: 300 },
+  { x: "Calories", y: 900 },
+  { x: "Group Carb", y: 400 },
+  { x: "Fat", y: 100 },
+  { x: "Protein", y: 300 },
 ];
+
+export const nameOfFood = "Kanaviillokki"
 
 function App() {
   return (
