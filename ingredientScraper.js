@@ -39,7 +39,10 @@ const polishSummaryFields = (summary, ingredients, weight, fields) => {
 };
 
 const areIngredientsEqual = (firstFood, secondFood) => {
-  return firstFood.toLowerCase() === secondFood.toLowerCase();
+  return (
+    (firstFood || '').toLowerCase() ===
+    (secondFood || '').toLowerCase()
+  );
 }
 
 const handleIngredient = (summary, foundIngredients, element, foodData) => {
