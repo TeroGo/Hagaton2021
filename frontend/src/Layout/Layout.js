@@ -6,8 +6,6 @@ import logo from'../logo.png';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
-const message = "kissa";
-
 function getClassificationIcon(classification) {
   switch (classification) {
     case "CHICKEN":
