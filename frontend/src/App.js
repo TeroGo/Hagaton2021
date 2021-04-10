@@ -12,12 +12,13 @@ export const chartData = [
 function App() {
   const [foodData, setFoodData] = React.useState({});
 
-  async function fetchData() {
+  async function fetchData(searchPhrase) {
+    console.log(searchPhrase);
     const response = await fetch(
-      "https://lunchmaster2k.herokuapp.com/api?text=kana"
+      `https://lunchmaster2k.herokuapp.com/api?text=${searchPhrase}`
     );
     const food = await response.json();
-    // waits until the request completes...
+    setFoodData(food);
     console.log(food);
   }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { nameOfFood } from "../App";
 
 const InfoBox = (props) => {
-  const test = "apina";
+  let test = "apina";
   if (props.dataFromParent.ingredients) {
     test = props.dataFromParent.ingredients[0].FOODID;
   }
