@@ -47,8 +47,14 @@ app.get('/api/', (req, res) => {
   console.log(queryText);
 
   res.end(JSON.stringify({
-    ingredients: foundIngredients,
-    calories: 5000
+    summary: {
+      name: queryText,
+      calories: 300,
+      carbs: 25,
+      fat: 50,
+      protein: 10
+    },
+    ingredients: foundIngredients
   }));
 });
 
