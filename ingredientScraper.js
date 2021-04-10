@@ -57,20 +57,20 @@ const handleIngredient = (summary, foundIngredients, element, foodData) => {
 }
 
 const processFoodData = (foodData, queryText, foundIngredients, summary, classification) => {
-  foodData.food.forEach(element => {
-    const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
-    if(queryText.match(regex)) {
-      handleIngredient(summary, foundIngredients, element, foodData);
-    }
-  });
   const mappedFineliName = mappings[classification];
-  console.log(mappedFineliName);
   const searchedFoodItem = foodData.food.find(foodItem => areIngredientsEqual(foodItem.FOODNAME, mappedFineliName));
   if(!searchedFoodItem) {
     console.log('everything burned');
     return;
   }
   handleIngredient(summary, foundIngredients, searchedFoodItem, foodData);
+
+  foodData.food.forEach(element => {
+    const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
+    if(queryText.match(regex)) {
+      handleIngredient(summary, foundIngredients, element, foodData);
+    }
+  });
 }
 
 module.exports = {
