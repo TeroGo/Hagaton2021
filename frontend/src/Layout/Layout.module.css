@@ -1,15 +1,19 @@
 main {
   display: flex;
+  justify-content: stretch;
 }
 
 .left {
-  width: 50vw;
-  color: red;
+  color: white;
+  padding: 1em;
+  box-sizing: border-box;
   background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right {
-  width: 50vw;
   color: green;
 }
 
@@ -17,4 +21,27 @@ main {
   padding: 50px;
   border: 2px solid blue;
   text-align: center;
+}
+
+textarea {
+  min-height: 5em;
+  margin-bottom: 0.5em;
+  font-family: sans-serif;
+  font-size: large;
+}
+
+label {
+  margin-bottom: 0.5em;
+  font-size: larger;
+}
+
+button {
+  background-color: hotpink;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }

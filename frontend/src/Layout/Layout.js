@@ -6,7 +6,11 @@ const Layout = () => {
   return (
     <main>
       <section className={styles.left}>
-        <textarea defaultValue="Riisinuudeli ”phad thai” kana"></textarea>
+        <label for="foodInput">Enter lunch description</label>
+        <textarea
+          id="foodInput"
+          defaultValue="Riisinuudeli ”phad thai” kana"
+        ></textarea>
         <div>
           <button>Haistele raaka-aineet</button>
         </div>
