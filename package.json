@@ -4,7 +4,7 @@
   "description": "Super ai for everything food related",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "node test-classifier.js",
     "start": "node app.js"
   },
   "repository": {
