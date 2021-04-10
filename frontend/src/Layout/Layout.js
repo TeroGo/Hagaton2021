@@ -2,6 +2,7 @@ import React from "react";
 import Chart from "../Chart/Chart";
 import InfoBox from "../InfoBox/InfoBox";
 import styles from "./Layout.module.css";
+import logo from'../logo.png';
 
 const message = "kissa";
 
@@ -40,6 +41,9 @@ const Layout = (props) => {
   return (
     <main>
       <section className={styles.left}>
+        <div className='logo-container'>
+          <img src={logo} alt='Lunchmaster 2k logo' style={{ marginBottom: '25px' }} />
+        </div>
         <label htmlFor="foodInput">Enter lunch description</label>
         <textarea
           id="foodInput"
