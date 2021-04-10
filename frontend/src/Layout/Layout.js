@@ -68,19 +68,6 @@ const Layout = (props) => {
       </section>
 
       <section className={styles.right}>
-        <div className={styles.chart}>
-          {resultsLoaded && (
-            <>
-              <div style={{ fontSize: "5em", position: "absolute", top: "0" }}>
-                {getClassificationIcon(props.foodData.summary.classification)}
-              </div>
-            </>
-          )}
-          <Chart data={props.foodData} />
-          {Object.keys(props.foodData).length !== 0 && (
-            <InfoBox dataFromParent={props.foodData} />
-          )}
-        </div>
         {props.isLoading && (
           <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
             <Loader
@@ -94,11 +81,13 @@ const Layout = (props) => {
         )}
         {(!props.isLoading && resultsLoaded) && (
           <div className={styles.chart}>
-            <div style={{ fontSize: '256px', position: 'absolute', top: '0' }}>
+            <div style={{ fontSize: "5em", position: "absolute", top: "0" }}>
               {getClassificationIcon(props.foodData.summary.classification)}
-            </div>              
+            </div>
             <Chart data={props.foodData} />
-            <InfoBox dataFromParent={props.foodData} />
+            {Object.keys(props.foodData).length !== 0 && (
+              <InfoBox dataFromParent={props.foodData} />
+            )}
           </div>
         )}
       </section>

@@ -25,7 +25,7 @@ function App() {
         setFoodData(food);
         setIsLoading(false);
         console.log(food);
-      }, 5000);
+      }, 1000);
     } catch (err) {
       setIsLoading(false);
       alert(err);
