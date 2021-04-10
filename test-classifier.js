@@ -17,5 +17,5 @@ fs.createReadStream('data/classifier/trainingset-1.csv')
 
     expect('Paahdettua siikaa', classifier.classify('Paahdettua siikaa'), 'WHITE_FISH');
     expect('Possua', classifier.classify('Possua'), 'PORK');
-    expect('Norjanlohikeitto', classifier.classify('Norjanlohikeitto'), 'SALMON');
+    expect('Lohikeitto', classifier.classify('Lohikeitto'), 'SALMON');
   });
