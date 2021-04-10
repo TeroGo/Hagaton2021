@@ -6,18 +6,24 @@ const Chart = (props) => {
   console.log(props.data);
 
   var chartData;
-  var isThereData = Object.keys(props.data).length !== 0;
-  if (isThereData) {
+
+  if (Object.keys(props.data).length !== 0) {
     chartData = [
-      { x: "Carb", y: props.data?.summary.carbs },
-      { x: "Fat", y: props.data?.summary?.fat },
-      { x: "Protein", y: props.data?.summary?.protein },
+      {
+        x: `Carbs: ${props.data?.summary.carbs}`,
+        y: props.data?.summary.carbs,
+      },
+      { x: `Fat: ${props.data?.summary.fat}`, y: props.data?.summary?.fat },
+      {
+        x: `Protein: ${props.data?.summary.protein}`,
+        y: props.data?.summary?.protein,
+      },
     ];
   }
   // empty if no data
   return (
-    <div className={styles.chartContainer}>
-      {isThereData && (
+    <div>
+      {props.data && (
         <VictoryPie
           data={chartData}
           colorScale={["skyblue", "teal", "maroon", "pink"]}
