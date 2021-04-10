@@ -4,7 +4,7 @@ const path = require('path');
 
 const loadFoodData = (filesToRead, foodData) => {
   filesToRead.forEach(element => {
-    fs.createReadStream(path.join(__dirname, 'data/finelli/'+ element + '.csv'))
+    fs.createReadStream(path.join(__dirname, 'data/finelli/'+ element + '.csv'), {encoding: 'utf-8'})
     .pipe(csv({ separator: ';'}))
     .on('data', (data) => {
       if (!foodData[`${element}`]) {
