@@ -42,7 +42,7 @@ app.get('/api/', (req, res) => {
     classification
   };
 
-  processFoodData(foodData, queryText, foundIngredients, summary)
+  processFoodData(foodData, queryText, foundIngredients, summary, classification);
   polishSummaryFields(summary, foundIngredients.length, weight, ['fat', 'carbs', 'protein', 'calories']);
 
   res.end(JSON.stringify({

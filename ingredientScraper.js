@@ -1,4 +1,4 @@
-
+const {mappings} = require('./classifierToFineliMappings');
 
 const carbDataField = 'CHOAVL';
 const fatDataField = 'FAT';
@@ -38,21 +38,32 @@ const polishSummaryFields = (summary, ingredients, weight, fields) => {
   });
 };
 
-const processFoodData = (foodData, queryText, foundIngredients, summary) => {
+const handleIngredient = (summary, foundIngredients, element, foodData) => {
+  const ingredient = {
+    name: element.FOODNAME,
+    calories: 0,
+    carbs: 0,
+    fat: 0,
+    protein: 0
+  };
+  handleFoodComponentData(ingredient, summary, element, foodData);
+  foundIngredients.push(ingredient);
+}
+
+const processFoodData = (foodData, queryText, foundIngredients, summary, classification) => {
   foodData.food.forEach(element => {
     const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
     if(queryText.match(regex)) {
-      const ingredient = {
-        name: element.FOODNAME,
-        calories: 0,
-        carbs: 0,
-        fat: 0,
-        protein: 0
-      };
-      handleFoodComponentData(ingredient, summary, element, foodData);
-      foundIngredients.push(ingredient);
+      handleIngredient(summary, foundIngredients, element, foodData);
     }
   });
+  const mappedFineliName = mappings[classification];
+  const searchedFoodItem = foodData.food.find(foodItem => foodItem.FOODNAME === mappedFineliName);
+  if(!searchedFoodItem) {
+    console.log('everything burned');
+    return;
+  }
+  handleIngredient(summary, foundIngredients, searchedFoodItem, foodData);
 }
 
 module.exports = {
