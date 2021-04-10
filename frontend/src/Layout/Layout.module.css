@@ -40,7 +40,7 @@ textarea {
 
 label {
   margin-bottom: 0.5em;
-  font-size: larger;
+  font-size: 1.5em;
 }
 
 button {
@@ -51,5 +51,5 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1.2 em;
 }
