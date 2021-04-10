@@ -8,7 +8,7 @@ const Chart = (props) => {
   var chartData;
   function HandleZeroToEmptyStr(number, str) {
 
-    if (number === 0) return ""
+    if (number === 0) return " "
     return str;   // The function returns the product of p1 and p2
   }
 
@@ -17,12 +17,13 @@ const Chart = (props) => {
   if (hasData) {
     chartData = [
       {
-        x: `Carbs: ${props.data?.summary.carbs}`,
+        x: HandleZeroToEmptyStr(props.data?.summary.carbs, `Carbs: ${props.data?.summary.carbs}`),
         y: props.data?.summary.carbs,
       },
-      { x: `Fat: ${props.data?.summary.fat}`, y: props.data?.summary?.fat },
+      { x: HandleZeroToEmptyStr(props.data?.summary.fat, `Fat: ${props.data?.summary.fat}`) ,
+        y: props.data?.summary?.fat },
       {
-        x: `Protein: ${props.data?.summary.protein}`,
+        x: HandleZeroToEmptyStr(props.data?.summary.protein, `Protein: ${props.data?.summary.protein}`),
         y: props.data?.summary?.protein,
       },
     ];
