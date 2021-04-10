@@ -6,6 +6,11 @@ const Chart = (props) => {
   console.log(props.data);
 
   var chartData;
+  function HandleZeroToEmptyStr(number, str) {
+
+    if (number === 0) return ""
+    return str;   // The function returns the product of p1 and p2
+  }
 
   const hasData = Object.keys(props.data).length !== 0;
 
@@ -28,7 +33,7 @@ const Chart = (props) => {
       {hasData && (
         <VictoryPie
           data={chartData}
-          colorScale={["skyblue", "teal", "maroon", "pink"]}
+          colorScale={["#6E0DDD", "#FF6600", " #FF0099", "red"]}
           radius={100}
         />
       )}
