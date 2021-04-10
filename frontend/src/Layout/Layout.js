@@ -3,27 +3,26 @@ import Chart from "../Chart/Chart";
 import InfoBox from "../InfoBox/InfoBox";
 import styles from "./Layout.module.css";
 
-const message = "kissa"
+const message = "kissa";
 
-const Layout = () => {
-
+const Layout = (props) => {
   return (
     <main>
       <section className={styles.left}>
-        <label for="foodInput">Enter lunch description</label>
+        <label htmlFor="foodInput">Enter lunch description</label>
         <textarea
           id="foodInput"
           defaultValue="Riisinuudeli ”phad thai” kana"
         ></textarea>
         <div>
-          <button>Haistele raaka-aineet</button>
+          <button onClick={props.getData}>Haistele raaka-aineet</button>
         </div>
       </section>
 
       <section className={styles.right}>
         <div className={styles.chart}>
           <Chart />
-          <InfoBox dataFromParent = {message} />
+          <InfoBox dataFromParent={props.foodData} />
         </div>
       </section>
     </main>

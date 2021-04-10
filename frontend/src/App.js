@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Layout from "./Layout/Layout";
 
@@ -8,12 +9,27 @@ export const chartData = [
   { x: "Protein", y: 300 },
 ];
 
-export const nameOfFood = "Kanaviillokki"
-
 function App() {
+  const [foodData, setFoodData] = React.useState({});
+
+  async function fetchData() {
+    const response = await fetch(
+      "https://lunchmaster2k.herokuapp.com/api?text=kana"
+    );
+    const food = await response.json();
+    // waits until the request completes...
+    console.log(food);
+  }
+
+  React.componentDidMount = () => {
+    fetchData();
+  };
+
+  const testData = {};
+
   return (
     <div className="App">
-      <Layout />
+      <Layout foodData={foodData} getData={fetchData} />
     </div>
   );
 }
