@@ -11,6 +11,9 @@ const InfoBox = (props) => {
           {"Main ingredient: " + props.dataFromParent.ingredients[0].name}
         </div>
         <div>
+          <p>100g of this stuff contains:</p>
+        </div>
+        <div>
           {" Calories " +
             props.dataFromParent.ingredients[0].calories +
             " / Carbs " +
