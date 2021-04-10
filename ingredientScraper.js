@@ -38,6 +38,10 @@ const polishSummaryFields = (summary, ingredients, weight, fields) => {
   });
 };
 
+const areIngredientsEqual = (firstFood, secondFood) => {
+  return firstFood.toLowerCase() === secondFood.toLowerCase();
+}
+
 const handleIngredient = (summary, foundIngredients, element, foodData) => {
   const ingredient = {
     name: element.FOODNAME,
@@ -47,7 +51,9 @@ const handleIngredient = (summary, foundIngredients, element, foodData) => {
     protein: 0
   };
   handleFoodComponentData(ingredient, summary, element, foodData);
-  foundIngredients.push(ingredient);
+  if (!foundIngredients.find(foundIngredient => areIngredientsEqual(foundIngredient.name, element.FOODNAME))) {
+    foundIngredients.push(ingredient);
+  }
 }
 
 const processFoodData = (foodData, queryText, foundIngredients, summary, classification) => {
@@ -58,7 +64,8 @@ const processFoodData = (foodData, queryText, foundIngredients, summary, classif
     }
   });
   const mappedFineliName = mappings[classification];
-  const searchedFoodItem = foodData.food.find(foodItem => foodItem.FOODNAME === mappedFineliName);
+  console.log(mappedFineliName);
+  const searchedFoodItem = foodData.food.find(foodItem => areIngredientsEqual(foodItem.FOODNAME, mappedFineliName));
   if(!searchedFoodItem) {
     console.log('everything burned');
     return;
