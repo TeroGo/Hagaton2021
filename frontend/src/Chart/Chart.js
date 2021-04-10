@@ -1,19 +1,15 @@
 import React from "react";
 //import styles from "./Chart.module.css";
 import { VictoryPie } from "victory-pie";
+import { chartData} from "../App";
 
-const myData = [
-  { x: "Group A", y: 900 },
-  { x: "Group B", y: 400 },
-  { x: "Group C", y: 300 },
-];
 
 
 const Chart = () => {
   return (
           <VictoryPie
-            data={myData}
-            colorScale={["blue", "yellow", "red"]}
+            data={chartData}
+            colorScale={["skyblue", "teal", "maroon"]}
             radius={100}
           />
         
