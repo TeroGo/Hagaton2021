@@ -8,10 +8,10 @@ const Chart = (props) => {
     console.log(props.data)
     
     var chartData;
-
-    if(Object.keys(props.data).length !==0){
+    var isThereData = (Object.keys(props.data).length !==0)
+    if(isThereData){
       chartData = [
-        { x: "Carb", y: props.data?.summary.carbs },
+        { x: "Carb", y: props.data?.summary.carbs},
         { x: "Fat", y: props.data?.summary?.fat },
         { x: "Protein", y: props.data?.summary?.protein }
       ];
@@ -19,11 +19,12 @@ const Chart = (props) => {
    // empty if no data
     return (
       <div>
-          {props.data && <VictoryPie
+          {isThereData && <VictoryPie
             data={chartData}
             colorScale={["skyblue", "teal", "maroon", "pink"]}
             radius={100}
-          />}
+          />
+          }
     </div>
   );
 };
