@@ -4,7 +4,7 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const csv = require('csv-parser')
 const fs = require('fs');
-
+const { classify } = require('./classifier');
 const app = express();
 
 app.use(cors());
@@ -75,34 +75,30 @@ app.get('/api/', (req, res) => {
   }
   const weight = req.query.weight || 100;
   const foundIngredients = [];
-  const summary = {
-    name: queryText,
-    calories: 0,
-    carbs: 0,
-    fat: 0,
-    protein: 0
-  };
+  let classification = 'UNKNOWN';
 
-  foodData.food.forEach(element => {
-    const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
-    if(queryText.match(regex)) {
-      const ingredient = {
-        name: element.FOODNAME,
-        calories: 0,
-        carbs: 0,
-        fat: 0,
-        protein: 0
-      };
-      handleFoodComponentData(ingredient, summary, element);
+  if (queryText) {
+    classification = classify(queryText);
 
-      console.log(ingredient);
-      foundIngredients.push(ingredient);
-    }
-  });
-  polishSummaryFields(summary, foundIngredients.length, weight, ['fat', 'carbs', 'protein', 'calories']);
+    foodData.food.forEach(element => {
+      const regex = new RegExp(`.*${element.FOODNAME}.*`, 'i');
+      if(queryText.match(regex)) {
+        console.log('found ' + element);
+        foundIngredients.push(element);
+      }
+    });
+  }
+  console.log(queryText);
 
   res.end(JSON.stringify({
-    summary,
+    summary: {
+      name: queryText,
+      calories: 300,
+      carbs: 25,
+      fat: 50,
+      protein: 10,
+      classification
+    },
     ingredients: foundIngredients
   }));
 });
