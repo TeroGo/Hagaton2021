@@ -1,4 +1,5 @@
 import React from "react";
+import Chart from "../Chart/Chart";
 import styles from "./Layout.module.css";
 
 const Layout = () => {
@@ -12,7 +13,9 @@ const Layout = () => {
       </section>
 
       <section className={styles.right}>
-        <div className={styles.chart}>Awesome chart of the results</div>
+        <div className={styles.chart}>
+          <Chart />
+        </div>
       </section>
     </main>
   );
