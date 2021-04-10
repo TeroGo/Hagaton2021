@@ -5,20 +5,20 @@ import { VictoryPie } from "victory-pie";
 
 const Chart = (props) => {
 
- 
-    var chartData = [];
+    console.log(props.data)
+    
+    var chartData;
 
-    if(props.data !==null && props.data.summary !==null && props.data.summary.calories !== null){
+    if(Object.keys(props.data).length !==0){
       chartData = [
-        { x: "Calories", y: props.data?.summary?.calories},
-        { x: "Group Carb", y: props.data?.summary?.carbs },
+        { x: "Carb", y: props.data?.summary.carbs },
         { x: "Fat", y: props.data?.summary?.fat },
         { x: "Protein", y: props.data?.summary?.protein }
       ];
     }
    // empty if no data
     return (
-    <div>
+      <div>
           {props.data && <VictoryPie
             data={chartData}
             colorScale={["skyblue", "teal", "maroon", "pink"]}
