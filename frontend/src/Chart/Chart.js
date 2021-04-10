@@ -7,7 +7,9 @@ const Chart = (props) => {
 
   var chartData;
 
-  if (Object.keys(props.data).length !== 0) {
+  const hasData = Object.keys(props.data).length !== 0;
+
+  if (hasData) {
     chartData = [
       {
         x: `Carbs: ${props.data?.summary.carbs}`,
@@ -23,7 +25,7 @@ const Chart = (props) => {
   // empty if no data
   return (
     <div>
-      {props.data && (
+      {hasData && (
         <VictoryPie
           data={chartData}
           colorScale={["skyblue", "teal", "maroon", "pink"]}
